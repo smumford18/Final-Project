@@ -12,5 +12,10 @@ int main() {
     
     //hi eric
     //Come here often?
+    // Eric's gonna do all the work for this project, right?
+    // Just kidding
+    // I'll do 15%
+    
+
     return 0;
 }

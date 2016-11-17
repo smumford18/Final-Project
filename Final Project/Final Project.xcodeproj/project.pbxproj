@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B8F57AD1DDD6B240003520D /* Card.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4B8F57AB1DDD6B240003520D /* Card.cpp */; };
+		4B8F57B01DDD6B510003520D /* Deck.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4B8F57AE1DDD6B510003520D /* Deck.cpp */; };
+		4B8F57B31DDD6B5E0003520D /* User.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4B8F57B11DDD6B5E0003520D /* User.cpp */; };
+		4B8F57B61DDD6B700003520D /* CPU.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4B8F57B41DDD6B700003520D /* CPU.cpp */; };
 		4B901BD31DDBC92200A3500C /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4B901BD21DDBC92200A3500C /* main.cpp */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +27,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4B8F57AB1DDD6B240003520D /* Card.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Card.cpp; sourceTree = "<group>"; };
+		4B8F57AC1DDD6B240003520D /* Card.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Card.hpp; sourceTree = "<group>"; };
+		4B8F57AE1DDD6B510003520D /* Deck.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Deck.cpp; sourceTree = "<group>"; };
+		4B8F57AF1DDD6B510003520D /* Deck.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Deck.hpp; sourceTree = "<group>"; };
+		4B8F57B11DDD6B5E0003520D /* User.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = User.cpp; sourceTree = "<group>"; };
+		4B8F57B21DDD6B5E0003520D /* User.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = User.hpp; sourceTree = "<group>"; };
+		4B8F57B41DDD6B700003520D /* CPU.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CPU.cpp; sourceTree = "<group>"; };
+		4B8F57B51DDD6B700003520D /* CPU.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CPU.hpp; sourceTree = "<group>"; };
 		4B901BCF1DDBC92100A3500C /* Final Project */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Final Project"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B901BD21DDBC92200A3500C /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -58,6 +70,14 @@
 			isa = PBXGroup;
 			children = (
 				4B901BD21DDBC92200A3500C /* main.cpp */,
+				4B8F57AB1DDD6B240003520D /* Card.cpp */,
+				4B8F57AC1DDD6B240003520D /* Card.hpp */,
+				4B8F57AE1DDD6B510003520D /* Deck.cpp */,
+				4B8F57AF1DDD6B510003520D /* Deck.hpp */,
+				4B8F57B11DDD6B5E0003520D /* User.cpp */,
+				4B8F57B21DDD6B5E0003520D /* User.hpp */,
+				4B8F57B41DDD6B700003520D /* CPU.cpp */,
+				4B8F57B51DDD6B700003520D /* CPU.hpp */,
 			);
 			path = "Final Project";
 			sourceTree = "<group>";
@@ -119,7 +139,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B8F57B31DDD6B5E0003520D /* User.cpp in Sources */,
+				4B8F57B01DDD6B510003520D /* Deck.cpp in Sources */,
+				4B8F57B61DDD6B700003520D /* CPU.cpp in Sources */,
 				4B901BD31DDBC92200A3500C /* main.cpp in Sources */,
+				4B8F57AD1DDD6B240003520D /* Card.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -246,6 +270,7 @@
 				4B901BD81DDBC92200A3500C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

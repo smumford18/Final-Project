@@ -49,6 +49,8 @@ public:
     
     void saveStats();
     
+    void sortHand();
+    
     void showHand();
     void addToHand(Card*);
     int understandHand();

@@ -10,7 +10,7 @@
 
 int blackJackBet()
 {
-    int bet = 0;
+    int bet =0;
     
     return bet;
 }

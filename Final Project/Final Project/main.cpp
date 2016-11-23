@@ -22,7 +22,7 @@ int main() {
 //    cout << "The player has " << player1.getBlackJackNumberOfWins() << " number of blackjack wins." << endl;
 //    player1.saveStats();
     
-    CPU cpu1;
+    //CPU cpu1;
     
     return 0;
 }

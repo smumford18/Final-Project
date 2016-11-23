@@ -14,7 +14,8 @@
 class CPU : public User
 {
 private:
-    
+    string name;
+    int money;
     
 public:
     CPU();

@@ -7,3 +7,9 @@
 //
 
 #include "Card.hpp"
+
+Card::Card(string VALUE, string SUIT)
+{
+    value = VALUE;
+    suit = SUIT;
+}

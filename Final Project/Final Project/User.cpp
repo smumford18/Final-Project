@@ -16,6 +16,7 @@ User::User()
     blackJackNumberOfGames = 0;
     texasHoldEmNumberOfWins = 0;
     texasHoldEmNumberOfGames = 0;
+    hand.push_back(NULL);
     cout << "Welcome, " << name << "!" << endl;
 }
 
@@ -31,11 +32,13 @@ User::User(string NAME)
         blackJackNumberOfGames = 0;
         texasHoldEmNumberOfWins = 0;
         texasHoldEmNumberOfGames = 0;
+        hand.push_back(NULL);
         cout << "Welcome, " << name << "!" << endl;
     }
     else
     {
         fileIO >> name >> money >> blackJackNumberOfWins >> blackJackNumberOfGames >> texasHoldEmNumberOfWins >> texasHoldEmNumberOfGames;
+        hand.push_back(NULL);
         cout << "Welcome back, " << name << "!" << endl;
     }
     fileIO.close();
@@ -104,6 +107,65 @@ void User::saveStats()
         fileIO << name << " " <<  money << " " << blackJackNumberOfWins << " " << blackJackNumberOfGames << " " << texasHoldEmNumberOfWins << " " << texasHoldEmNumberOfGames;
     }
     fileIO.close();
+}
+
+void User::addToHand(Card* newCard)
+{
+    hand.push_back(newCard);
+}
+
+int User::understandHand()
+{
+    // Rankings:
+    // High Card 1
+    // Pair 2
+    // Two Pair 3
+    // Three of a kind 4
+    // Straight 5
+    // Flush 6
+    // Full house 7
+    // Four of a kind 8
+    // Straight flush 9
+    // Royal flush 10
+    
+    // Finds number of same suit
+    int numOfSameSuit = 0;
+    for(int i=0; i<hand.size(); i++)
+    {
+        //string suitTest = hand.at(i)/*.getSuit()*/;
+        for(int j=0; j<hand.size(); i++)
+        {
+            //if(hand.at(j) == suitTest)
+                numOfSameSuit++;
+        }
+    }
+    
+    vector<string> testValues;
+    testValues.push_back("Ace");
+    testValues.push_back("King");
+    testValues.push_back("Queen");
+    testValues.push_back("Jack");
+    testValues.push_back("10");
+    int numOfMatchingValues = 0;
+    
+    // Finds number of 
+    for(int i=0; i<testValues.size(); i++)
+    {
+        //string tester = testValues.at(i).getValue;
+        for(int j=0; j<hand.size(); j++)
+        {
+            //if(hand.at(j).getValue = tester)
+                //numOfMatchingValues++;
+        }
+    }
+    
+    
+    if(numOfSameSuit == 5 && numOfMatchingValues == 5)
+        return 10;
+    if(numOfSameSuit == 5)
+        return 9;
+    
+    return 1;
 }
 
 int User::blackJackBet()

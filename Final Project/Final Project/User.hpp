@@ -48,8 +48,10 @@ public:
     void incrementTexasHoldEmNumberOfGames();
     
     void saveStats();
+    
     void showHand();
-    void addToHand(Card, Card, Card, Card);
+    void addToHand(Card*);
+    int understandHand();
     
     int blackJackBet(); //
     int texasBet();     // SAME? Only need one bet function?

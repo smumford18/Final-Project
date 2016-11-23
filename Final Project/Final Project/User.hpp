@@ -10,23 +10,51 @@
 #define User_hpp
 
 #include <string>
+#include <vector>
+#include <fstream>
+#include <iostream>
+#include "Card.hpp"
 
 using namespace std;
 
 class User
 {
 private:
-    
+    string name;
+    int money;
+    int blackJackNumberOfWins;
+    int blackJackNumberOfGames;
+    int texasHoldEmNumberOfWins;
+    int texasHoldEmNumberOfGames;
+    bool folded;
+    vector<Card*> hand;
     
 public:
-    User(); // Will create user from file IO
+    User(); // For debug purposes
     User(string); // Will create new user
-    void getName();
-    void getMoney();
-    void getBlackJackNumberOfWins();
-    void getBlackJackNumberOfGames();
-    void getTexasHoldEmNumberOfWins();
-    void getTexasHoldEmNumberOfGames();
+    
+    int getName();
+    int getMoney();
+    int getBlackJackNumberOfWins();
+    int getBlackJackNumberOfGames();
+    int getTexasHoldEmNumberOfWins();
+    int getTexasHoldEmNumberOfGames();
+    
+    void setMoney(int);
+    
+    void incrementBlackJackNumberOfWins();
+    void incrementBlackJackNumberOfGames();
+    void incrementTexasHoldEmNumberOfWins();
+    void incrementTexasHoldEmNumberOfGames();
+    
+    void saveStats();
+    void showHand();
+    void addToHand(Card, Card, Card, Card);
+    
+    int blackJackBet(); //
+    int texasBet();     // SAME? Only need one bet function?
+    
+    void fold();
     
 };
 

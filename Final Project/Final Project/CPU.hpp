@@ -9,14 +9,19 @@
 #ifndef CPU_hpp
 #define CPU_hpp
 
-class CPU
+#include "User.hpp"
+
+class CPU : public User
 {
 private:
     
     
 public:
-    void getName();
-    void getMoney();
+    CPU();
+    CPU(int);
+    
+    int blackJackBet(); //
+    int texasBet();     // SAME? Only need one bet function?
     
 };
 

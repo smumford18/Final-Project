@@ -7,3 +7,17 @@
 //
 
 #include "CPU.hpp"
+
+int blackJackBet()
+{
+    int bet = 0;
+    
+    return bet;
+}
+
+int texasBet()
+{
+    int bet = 0;
+    
+    return bet;
+}

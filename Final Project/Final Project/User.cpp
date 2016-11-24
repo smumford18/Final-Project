@@ -109,6 +109,12 @@ void User::saveStats()
     fileIO.close();
 }
 
+void User::showHand()
+{
+//    cout << hand.at(0)->getValue() << " of " << hand.at(0)->getSuit() << endl;
+//    cout << hand.at(1).getValue() << " of " << hand.at(1).getSuit() << endl;
+}
+
 void User::addToHand(Card* newCard)
 {
     hand.push_back(newCard);
@@ -148,7 +154,7 @@ int User::understandHand()
     testValues.push_back("10");
     int numOfMatchingValues = 0;
     
-    // Finds number of 
+    // Finds number of same values
     for(int i=0; i<testValues.size(); i++)
     {
         //string tester = testValues.at(i).getValue;

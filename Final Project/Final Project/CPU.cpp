@@ -30,36 +30,157 @@ int CPU::blackJackBet()
     return bet;
 }
 
-int CPU::texasBet(int rank)
+int CPU::texasBet(int rank, int otherBet, bool check)
 {
     int bet = 0;
     srand((unsigned int)time(NULL));
-    int bluff = rand() % 10;
-    if(bluff == 1)
+    // An option for if check is passed on to the CPU
+    if(check == true)
     {
-        int temp = rand() % 15;
-        bet = temp;
-        return bet;
+        // 10% chance the CPU bluffs
+        int bluff = rand() % 10;
+        if(bluff == 0)
+        {
+            if(rank >= 3)
+            {
+                int temp = rand() % 15;
+                bet = temp;
+                return bet;
+            }
+            if(rank == 2)
+            {
+                int temp = rand() % 10;
+                bet = 5 + temp;
+                return bet;
+            }
+            if(rank == 1)
+            {
+                int temp = rand() % 5;
+                bet = temp;
+                return bet;
+            }
+        }
+        else
+        {
+            if(rank >= 7)
+            {
+                int temp = rand() % 25;
+                bet = temp;
+                return bet;
+            }
+            if(rank >= 5)
+            {
+                int temp = rand() % 15;
+                bet = 10 + temp;
+                return bet;
+            }
+            if(rank >= 3)
+            {
+                int temp = rand() % 15;
+                bet = temp;
+                return bet;
+            }
+            if(rank == 2)
+            {
+                int chanceCheck = rand() % 2;
+                // With a pair, 50% chance CPU checks or raises
+                if(chanceCheck == 0)
+                {
+                    int temp = rand() % 5;
+                    bet =  temp;
+                    return bet;
+                }
+                else if(chanceCheck == 1)
+                {
+                    bet = otherBet;
+                    return bet;
+                }
+            }
+            // With a high card, matches bet
+            // UPDATE? if high card is low enough, fold
+            if(rank == 1)
+            {
+                bet = otherBet;
+                return bet;
+            }
+        }
     }
-    else
+    else if(check == false)
     {
-        if(rank >= 6)
+        int bluff = rand() % 10;
+        // Random number that allows for 10% chance the CPU bluffs
+        if(bluff == 0)
         {
-            int temp = rand() % 25;
-            bet = 25 + temp;
-            return bet;
+            // Random number that allows for 25% chance CPU increases the bet while bluffing and 75% chance CPU matches check
+            int chanceCheck = rand() % 4;
+            if(chanceCheck == 0)
+            {
+                int temp = rand() % 5;
+                bet = otherBet + temp;
+                return bet;
+            }
+            else if(chanceCheck >= 1)
+            {
+                bet = 0;
+                return bet;
+            }
         }
-        if(rank >= 3)
+        // 90% chance the CPU doesn't bluff
+        else
         {
-            int temp = rand() % 20;
-            bet = 10 + temp;
-            return bet;
-        }
-        if(rank <= 2)
-        {
-            int temp = rand() % 10;
-            bet = temp;
-            return bet;
+            if(rank >= 6)
+            {
+                // If the total bet is less than 15, CPU raises bet
+                if(otherBet < 15)
+                {
+                    int temp = rand() % 25;
+                    bet = otherBet + temp;
+                    return bet;
+                }
+                // Or matches the bet if it is greater than 15
+                else
+                {
+                    bet = 0;
+                    return bet;
+                }
+            }
+            if(rank >= 3)
+            {
+                // If the total bet is less than 8, CPU raises bet
+                if(otherBet < 8)
+                {
+                    int temp = rand() % 20;
+                    bet = otherBet + temp;
+                    return bet;
+                }
+                // Or matches the bet if it is greater than 8
+                else
+                {
+                    bet = 0;
+                    return bet;
+                }
+            }
+            if(rank == 2)
+            {
+                // If the total bet is less than 4, CPU raises bet
+                if(otherBet < 4)
+                {
+                    int temp = rand() % 10;
+                    bet = temp;
+                    return bet;
+                }
+                // Or matches the bet if it is greater than 4
+                else
+                {
+                    bet = 0;
+                    return bet;
+                }
+            }
+            if(rank == 1)
+            {
+                bet = 0;
+                return bet;
+            }
         }
     }
     return bet;

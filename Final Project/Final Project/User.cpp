@@ -219,6 +219,8 @@ int User::texasBet()
         {
             folded = true;
             tooMuch = false;
+            bet = -1;
+            return bet;
         }
 //        IMPLEMENT CHECK LATER?
 //        else if(test == "c" || test == "C")
@@ -233,11 +235,13 @@ int User::texasBet()
                 cout << "You don't have that much money!\n Please enter another amount: ";
             }
             else
+            {
                 tooMuch = false;
+                money -= bet;
+                folded = false;
+            }
         }
     }
-    money -= bet;
-    folded = false;
     return bet;
 }
 

@@ -22,7 +22,7 @@ public:
     CPU(int);
     
     int blackJackBet(); //
-    int texasBet(int);     // SAME? Only need one bet function?
+    int texasBet(int, int, bool);     // SAME? Only need one bet function?
     
 };
 

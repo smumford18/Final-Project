@@ -179,7 +179,7 @@ int User::blackJackBet()
     bool tooMuch = true;
     int bet = 0;
     cout << "You have $" << money << endl;
-    cout << "Enter a amount to bet or \"f\" to fold: ";
+    cout << "Enter an amount to bet or \"f\" to fold: ";
     while (tooMuch == true)
     {
         cin >> bet;
@@ -220,6 +220,12 @@ int User::texasBet()
             folded = true;
             tooMuch = false;
         }
+//        IMPLEMENT CHECK LATER?
+//        else if(test == "c" || test == "C")
+//        {
+//            bet = 0;
+//            return bet;
+//        }
         else
         {
             if(bet > money)

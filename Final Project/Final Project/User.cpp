@@ -208,14 +208,14 @@ int User::blackJackBet()
 int User::texasBet()
 {
     bool tooMuch = true;
-    int bet = 0;
+    string input;
     cout << "You have $" << money << endl;
     cout << "Enter a amount to bet or \"f\" to fold: ";
     while(tooMuch == true)
     {
-        cin >> bet;
-        string test = to_string(bet);
-        if(test == "f" || test == "F")
+        cin >> input;
+        int bet;
+        if(input == "f" || input == "F")
         {
             folded = true;
             tooMuch = false;
@@ -230,6 +230,7 @@ int User::texasBet()
 //        }
         else
         {
+            bet = stoi(input);
             if(bet > money)
             {
                 cout << "You don't have that much money!\n Please enter another amount: ";
@@ -239,10 +240,11 @@ int User::texasBet()
                 tooMuch = false;
                 money -= bet;
                 folded = false;
+                return bet;
             }
         }
     }
-    return bet;
+    return -1;
 }
 
 void User::fold()

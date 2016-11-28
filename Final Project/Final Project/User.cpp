@@ -69,9 +69,19 @@ int User::getTexasHoldEmNumberOfGames()
     return texasHoldEmNumberOfGames;
 }
 
+bool User::getFolded()
+{
+    return folded;
+}
+
 void User::setMoney(int MONEY)
 {
     money = MONEY;
+}
+
+void User::setFolded(bool FOLDED)
+{
+    folded = FOLDED;
 }
 
 void User::incrementBlackJackNumberOfWins()
@@ -168,10 +178,21 @@ int User::understandHand()
     
     if(numOfSameSuit == 5 && numOfMatchingValues == 5)
         return 10;
-    if(numOfSameSuit == 5)
+    else if(numOfSameSuit == 5 && numOfMatchingValues == 5)
         return 9;
+    else if(numOfMatchingValues == 4)
+        return 8;
+    else if(numOfSameSuit == 5)
+        return 6;
+    else if(numOfMatchingValues == 3)
+        return 4;
+    else if(numOfMatchingValues == 2)
+        return 2;
+    else
+        return 1;
     
-    return 1;
+    
+    return -1;
 }
 
 int User::blackJackBet()
@@ -209,8 +230,8 @@ int User::texasBet()
 {
     bool tooMuch = true;
     string input;
-    cout << "You have $" << money << endl;
-    cout << "Enter a amount to bet or \"f\" to fold: ";
+    //cout << "You have $" << money << endl;
+    //cout << "Enter a amount to bet or \"f\" to fold: ";
     while(tooMuch == true)
     {
         cin >> input;
@@ -219,7 +240,7 @@ int User::texasBet()
         {
             folded = true;
             tooMuch = false;
-            bet = -1;
+            bet = 0;
             return bet;
         }
 //        IMPLEMENT CHECK LATER?

@@ -121,7 +121,7 @@ int CPU::texasBet(int rank, int otherBet, bool check)
             }
             else if(chanceCheck >= 1)
             {
-                bet = 0;
+                bet = otherBet;
                 return bet;
             }
         }
@@ -140,7 +140,7 @@ int CPU::texasBet(int rank, int otherBet, bool check)
                 // Or matches the bet if it is greater than 15
                 else
                 {
-                    bet = 0;
+                    bet = otherBet;
                     return bet;
                 }
             }
@@ -156,7 +156,7 @@ int CPU::texasBet(int rank, int otherBet, bool check)
                 // Or matches the bet if it is greater than 8
                 else
                 {
-                    bet = 0;
+                    bet = otherBet;
                     return bet;
                 }
             }
@@ -165,20 +165,20 @@ int CPU::texasBet(int rank, int otherBet, bool check)
                 // If the total bet is less than 4, CPU raises bet
                 if(otherBet < 4)
                 {
-                    int temp = rand() % 10;
-                    bet = temp;
+                    int temp = rand() % 5;
+                    bet = otherBet + temp;
                     return bet;
                 }
                 // Or matches the bet if it is greater than 4
                 else
                 {
-                    bet = 0;
+                    bet = otherBet;
                     return bet;
                 }
             }
             if(rank == 1)
             {
-                bet = 0;
+                bet = otherBet;
                 return bet;
             }
         }

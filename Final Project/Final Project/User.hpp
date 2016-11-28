@@ -39,8 +39,10 @@ public:
     int getBlackJackNumberOfGames();
     int getTexasHoldEmNumberOfWins();
     int getTexasHoldEmNumberOfGames();
+    bool getFolded();
     
     void setMoney(int);
+    void setFolded(bool);
     
     void incrementBlackJackNumberOfWins();
     void incrementBlackJackNumberOfGames();

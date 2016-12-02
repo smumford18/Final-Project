@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B894BB11DF0FF1A00FF447D /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4B894BAF1DF0FF1A00FF447D /* Game.cpp */; };
+		4B894BB41DF0FF2A00FF447D /* Blackjack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4B894BB21DF0FF2A00FF447D /* Blackjack.cpp */; };
+		4B894BB71DF0FF4E00FF447D /* TexasHoldEm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4B894BB51DF0FF4E00FF447D /* TexasHoldEm.cpp */; };
 		4B8F57AD1DDD6B240003520D /* Card.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4B8F57AB1DDD6B240003520D /* Card.cpp */; };
 		4B8F57B01DDD6B510003520D /* Deck.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4B8F57AE1DDD6B510003520D /* Deck.cpp */; };
 		4B8F57B31DDD6B5E0003520D /* User.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4B8F57B11DDD6B5E0003520D /* User.cpp */; };
@@ -27,6 +30,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4B894BAF1DF0FF1A00FF447D /* Game.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Game.cpp; sourceTree = "<group>"; };
+		4B894BB01DF0FF1A00FF447D /* Game.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Game.hpp; sourceTree = "<group>"; };
+		4B894BB21DF0FF2A00FF447D /* Blackjack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Blackjack.cpp; sourceTree = "<group>"; };
+		4B894BB31DF0FF2A00FF447D /* Blackjack.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Blackjack.hpp; sourceTree = "<group>"; };
+		4B894BB51DF0FF4E00FF447D /* TexasHoldEm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TexasHoldEm.cpp; sourceTree = "<group>"; };
+		4B894BB61DF0FF4E00FF447D /* TexasHoldEm.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TexasHoldEm.hpp; sourceTree = "<group>"; };
 		4B8F57AB1DDD6B240003520D /* Card.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Card.cpp; sourceTree = "<group>"; };
 		4B8F57AC1DDD6B240003520D /* Card.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Card.hpp; sourceTree = "<group>"; };
 		4B8F57AE1DDD6B510003520D /* Deck.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Deck.cpp; sourceTree = "<group>"; };
@@ -78,6 +87,12 @@
 				4B8F57B21DDD6B5E0003520D /* User.hpp */,
 				4B8F57B41DDD6B700003520D /* CPU.cpp */,
 				4B8F57B51DDD6B700003520D /* CPU.hpp */,
+				4B894BAF1DF0FF1A00FF447D /* Game.cpp */,
+				4B894BB01DF0FF1A00FF447D /* Game.hpp */,
+				4B894BB21DF0FF2A00FF447D /* Blackjack.cpp */,
+				4B894BB31DF0FF2A00FF447D /* Blackjack.hpp */,
+				4B894BB51DF0FF4E00FF447D /* TexasHoldEm.cpp */,
+				4B894BB61DF0FF4E00FF447D /* TexasHoldEm.hpp */,
 			);
 			path = "Final Project";
 			sourceTree = "<group>";
@@ -142,7 +157,10 @@
 				4B8F57B31DDD6B5E0003520D /* User.cpp in Sources */,
 				4B8F57B01DDD6B510003520D /* Deck.cpp in Sources */,
 				4B8F57B61DDD6B700003520D /* CPU.cpp in Sources */,
+				4B894BB41DF0FF2A00FF447D /* Blackjack.cpp in Sources */,
+				4B894BB11DF0FF1A00FF447D /* Game.cpp in Sources */,
 				4B901BD31DDBC92200A3500C /* main.cpp in Sources */,
+				4B894BB71DF0FF4E00FF447D /* TexasHoldEm.cpp in Sources */,
 				4B8F57AD1DDD6B240003520D /* Card.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

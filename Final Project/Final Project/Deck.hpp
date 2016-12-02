@@ -19,7 +19,7 @@ private:
     
 public:
     Deck();
-    virtual void shuffleDeck();
+    void shuffleDeck();
     
 };
 

@@ -7,8 +7,11 @@
 //
 
 #include <iostream>
+#include <vector>
 #include "User.hpp"
 #include "CPU.hpp"
+#include "Card.hpp"
+#include "Deck.hpp"
 
 using namespace std;
 
@@ -29,6 +32,8 @@ int main() {
     User user1("Lydia");
     texasHoldEmGame(user1);
     return 0;
+    
+    
 }
 
 void texasHoldEmGame(User user1)

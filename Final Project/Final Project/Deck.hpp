@@ -10,15 +10,18 @@
 #define Deck_hpp
 
 #include <vector>
+#include <iostream>
 #include "Card.hpp"
 
 class Deck
 {
 private:
-    vector<Card> deck;
+    vector<Card*> deck;
     
 public:
-    Deck();
+    Deck(int);
+    ~Deck();
+    Card* at(int);
     void shuffleDeck();
     
 };

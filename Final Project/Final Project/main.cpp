@@ -31,9 +31,8 @@ int main() {
     
     User user1("Lydia");
     texasHoldEmGame(user1);
+    
     return 0;
-    
-    
 }
 
 void texasHoldEmGame(User user1)
@@ -44,6 +43,21 @@ void texasHoldEmGame(User user1)
     int rounds = 1;
     bool potRight;
     user1.setFolded(false);
+    Deck deck(1);
+    deck.shuffleDeck();
+    for(int i=0; i<6; i+=3)
+    {
+        user1.addToHand((deck.at(i)));
+        cpu1.addToHand(deck.at(i+1));
+        cpu2.addToHand(deck.at(i+2));
+    }
+    cout << "Users hand: " << endl;
+    user1.showHand();
+    cout << "CPU1 Hand: " << endl;
+    cpu1.showHand();
+    cout << "CPU2 Hand: " << endl;
+    cpu2.showHand(); cout << endl;
+    
     // Loops through the 3 rounds of the game
     while (rounds <= 3)
     {

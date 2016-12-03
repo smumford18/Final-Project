@@ -16,7 +16,6 @@ User::User()
     blackJackNumberOfGames = 0;
     texasHoldEmNumberOfWins = 0;
     texasHoldEmNumberOfGames = 0;
-    hand.push_back(NULL);
     cout << "Welcome, " << name << "!" << endl;
 }
 
@@ -32,7 +31,6 @@ User::User(string NAME)
         blackJackNumberOfGames = 0;
         texasHoldEmNumberOfWins = 0;
         texasHoldEmNumberOfGames = 0;
-        hand.push_back(NULL);
         cout << "Welcome, " << name << "!" << endl;
     }
     else
@@ -121,13 +119,45 @@ void User::saveStats()
 
 void User::showHand()
 {
-//    cout << hand.at(0)->getValue() << " of " << hand.at(0)->getSuit() << endl;
-//    cout << hand.at(1).getValue() << " of " << hand.at(1).getSuit() << endl;
+    cout << hand.at(0)->displayCard() << endl;
+    cout << hand.at(1)->displayCard() << endl;
 }
 
 void User::addToHand(Card* newCard)
 {
     hand.push_back(newCard);
+}
+
+void User::sortHand()
+{
+//    bool isSorted(const T list[], int size)
+//    {
+//        bool sorted = true;
+//        for(int i=0; i < size; i++)
+//        {
+//            if(list[i] > list[i+1])
+//            {
+//                sorted = false;
+//                break;
+//            }
+//        }
+//        
+//        return sorted;
+//    }
+    
+    double size = hand.size();
+    for(int j=0; j <= size; j++)
+    {
+        for(int i=0; i < size-1; i++)
+        {
+            if(hand[i] > hand[i+1])
+            {
+                Card *temp = hand[i];
+                hand[i] = hand[i+1];
+                hand[i+1] = temp;
+            }
+        }
+    }
 }
 
 int User::understandHand()
@@ -148,10 +178,10 @@ int User::understandHand()
     int numOfSameSuit = 0;
     for(int i=0; i<hand.size(); i++)
     {
-        //string suitTest = hand.at(i)/*.getSuit()*/;
+        string suitTest = hand.at(i)->getSuit();
         for(int j=0; j<hand.size(); i++)
         {
-            //if(hand.at(j) == suitTest)
+            if(hand.at(j)->getSuit() == suitTest)
                 numOfSameSuit++;
         }
     }

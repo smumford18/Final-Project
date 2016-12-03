@@ -30,3 +30,33 @@ string Card::displayCard()
     string output = value + " of " + suit;
     return output;
 }
+
+bool Card::operator==(Card& c)
+{
+    if(getValue() == c.getValue())
+    {
+        return true;
+    }
+    else
+        return false;
+}
+
+bool Card::operator>(Card& c)
+{
+    if(getValue() > c.getValue())
+    {
+        return true;
+    }
+    else
+        return false;
+}
+
+bool Card::operator<(Card& c)
+{
+    if(getValue() == c.getValue())
+    {
+        return true;
+    }
+    else
+        return false;
+}

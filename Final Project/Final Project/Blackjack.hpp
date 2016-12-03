@@ -10,6 +10,9 @@
 #define Blackjack_hpp
 
 #include <stdio.h>
+#include "Game.hpp"
+
+using namespace std;
 
 class Blackjack : public Game
 {

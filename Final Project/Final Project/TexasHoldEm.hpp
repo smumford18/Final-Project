@@ -10,6 +10,9 @@
 #define TexasHoldEm_hpp
 
 #include <stdio.h>
+#include "Game.hpp"
+
+using namespace std;
 
 class TexasHoldEm : public Game
 {

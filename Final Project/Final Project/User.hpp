@@ -42,6 +42,7 @@ public:
     bool getFolded();
     
     void setMoney(int);
+    //void addToMoney(int); ????? good for added to players bank after they win
     void setFolded(bool);
     
     void incrementBlackJackNumberOfWins();

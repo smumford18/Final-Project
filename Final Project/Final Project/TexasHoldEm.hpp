@@ -11,12 +11,17 @@
 
 #include <stdio.h>
 #include "Game.hpp"
+#include "User.hpp"
+#include "CPU.hpp"
+#include "Deck.hpp"
+#include "Card.hpp"
 
 using namespace std;
 
 class TexasHoldEm : public Game
 {
 public:
-    virtual void play();
+    //TexasHoldEm();
+    virtual void play(User);
 };
 #endif /* TexasHoldEm_hpp */

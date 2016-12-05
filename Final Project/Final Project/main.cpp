@@ -12,6 +12,9 @@
 #include "CPU.hpp"
 #include "Card.hpp"
 #include "Deck.hpp"
+#include "Game.hpp"
+#include "Blackjack.hpp"
+#include "TexasHoldEm.hpp"
 
 using namespace std;
 
@@ -29,8 +32,11 @@ int main() {
     
     //CPU cpu1;
     
-    User user1("Lydia");
-    texasHoldEmGame(user1);
+   User user1("Lydia");
+//    texasHoldEmGame(user1);
+    
+    TexasHoldEm newGame;
+    newGame.play(user1);
     
     return 0;
 }

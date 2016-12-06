@@ -43,6 +43,23 @@ bool Card::operator==(Card& c)
 
 bool Card::operator>(Card& c)
 {
+    if(getValue() == "Ace" && c.getValue() != "Ace")
+    {
+        return true;
+    }
+    if(getValue() == "King" && c.getValue() != "Ace" && c.getValue() != "King")
+    {
+        return true;
+    }
+    if(getValue() == "Queen" && c.getValue() != "Ace" && c.getValue() != "King" && c.getValue() != "Queen")
+    {
+        return true;
+    }
+    if(getValue() == "Jack" && c.getValue() != "Ace" && c.getValue() != "King" && c.getValue() != "Queen"
+        && c.getValue() != "Jack")
+    {
+        return true;
+    }
     if(getValue() > c.getValue())
     {
         return true;

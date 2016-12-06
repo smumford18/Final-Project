@@ -19,7 +19,6 @@ void TexasHoldEm::play(User user1)
     CPU cpu2(2);
     int pot = 0;
     int rounds = 1;
-    bool potRight;
     user1.setFolded(false);
     Deck deck(1);
     deck.shuffleDeck();
@@ -29,6 +28,9 @@ void TexasHoldEm::play(User user1)
         cpu1.addToHand(deck.at(i+1));
         cpu2.addToHand(deck.at(i+2));
     }
+    user1.sortHand();
+    cpu1.sortHand();
+    cpu2.sortHand();
     cout << "Users hand: " << endl;
     user1.showHand();
     cout << "CPU1 Hand: " << endl;

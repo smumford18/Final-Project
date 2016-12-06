@@ -150,7 +150,7 @@ void User::sortHand()
     {
         for(int i=0; i < size-1; i++)
         {
-            if(hand[i] > hand[i+1])
+            if(hand[i] < hand[i+1])
             {
                 Card *temp = hand[i];
                 hand[i] = hand[i+1];

@@ -12,13 +12,18 @@
 #include <stdio.h>
 #include "Game.hpp"
 
+#include "User.hpp"
+#include "CPU.hpp"
+#include "Deck.hpp"
+#include "Card.hpp"
+
 using namespace std;
 
 class Blackjack : public Game
 {
     
 public:
-    virtual void play();
+    virtual void play(User);
     
 };
 

@@ -23,7 +23,7 @@ public:
     Card(string, string);
     string getSuit();
     string getValue();
-    string displayCard();
+    void displayCard();
     bool isFace();
     
     bool operator==(Card&); // This should compare the value of the card (doesn't need to worry about suit)

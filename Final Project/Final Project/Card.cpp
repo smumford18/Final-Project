@@ -25,10 +25,10 @@ string Card::getValue()
     return value;
 }
 
-string Card::displayCard()
+void Card::displayCard()
 {
     string output = value + " of " + suit;
-    return output;
+    cout << output << endl;
 }
 
 bool Card::isFace()
@@ -117,8 +117,8 @@ bool Card::operator<(Card& c)
 
 bool Card::operator!=(Card& c)
 {
-    if(getValue() != c.getValue() && getSuit() != c.getSuit())
-        return true;
-    else
+    if(getValue() == c.getValue() && getSuit() == c.getSuit())
         return false;
+    else
+        return true;
 }

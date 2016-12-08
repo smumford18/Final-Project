@@ -77,6 +77,11 @@ void User::setMoney(int MONEY)
     money = MONEY;
 }
 
+void User::addToMoney(int pot)
+{
+    money += pot;
+}
+
 void User::setFolded(bool FOLDED)
 {
     folded = FOLDED;
@@ -119,8 +124,10 @@ void User::saveStats()
 
 void User::showHand()
 {
-    cout << hand.at(0)->displayCard() << endl;
-    cout << hand.at(1)->displayCard() << endl;
+    for(int i=0; i<hand.size(); i++)
+    {
+        hand.at(i)->displayCard();
+    }
 }
 
 void User::addToHand(Card* newCard)
@@ -231,11 +238,13 @@ int User::understandHand()
         return 4;
     else if(numOfMatchingValues == 2)
         return 2;
-    else
+    else if(numOfMatchingValues == 1)
+        return -1;
+    else if(numOfMatchingValues == 0)
         return 1;
     
     
-    return -1;
+    return -100;
 }
 
 int User::blackJackBet()

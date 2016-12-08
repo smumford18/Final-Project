@@ -24,6 +24,7 @@ public:
     Card* at(int);
     void shuffleDeck();
     
+    
 };
 
 #endif /* Deck_hpp */

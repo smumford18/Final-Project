@@ -31,6 +31,15 @@ string Card::displayCard()
     return output;
 }
 
+bool Card::isFace()
+{
+    if(value == "Ace" || value == "King" || value == "Queen" || value == "Jack")
+    {
+        return true;
+    }
+    else
+        return false;
+}
 bool Card::operator==(Card& c)
 {
     if(getValue() == c.getValue())
@@ -60,9 +69,18 @@ bool Card::operator>(Card& c)
     {
         return true;
     }
-    if(getValue() > c.getValue())
+    if(isFace() == false && c.isFace() == true)
     {
-        return true;
+        return false;
+    }
+    if(isFace() == false && c.isFace() == false)
+    {
+        if(stoi(getValue()) > stoi(c.getValue()))
+        {
+            return true;
+        }
+        else
+            return false;
     }
     else
         return false;
@@ -70,10 +88,29 @@ bool Card::operator>(Card& c)
 
 bool Card::operator<(Card& c)
 {
-    if(getValue() == c.getValue())
+    if(getValue() == "Ace")
+    {
+        return false;
+    }
+    if(getValue() == "King" && c.getValue() == "Ace")
     {
         return true;
     }
+    if(getValue() == "Queen")
+    {
+        if(c.getValue() == "Ace" || c.getValue() == "King")
+            return true;
+    }
+    if(getValue() == "Jack")
+    {
+        if(c.getValue() == "Ace" || c.getValue() == "King" || c.getValue() == "Queen")
+            return true;
+    }
+    if(stoi(getValue()) < stoi(c.getValue()))
+    {
+        return true;
+    }
+
     else
         return false;
 }

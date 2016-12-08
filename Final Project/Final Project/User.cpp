@@ -146,15 +146,15 @@ void User::sortHand()
 //    }
     
     double size = hand.size();
-    for(int j=0; j <= size; j++)
+    for(int j=0; j < size; j++)
     {
         for(int i=0; i < size-1; i++)
         {
-            if(hand[i] < hand[i+1])
+            if(*hand.at(i+1) > *hand.at(i))
             {
-                Card *temp = hand[i];
-                hand[i] = hand[i+1];
-                hand[i+1] = temp;
+                Card *temp = hand.at(i);
+                hand.at(i) = hand.at(i+1);
+                hand.at(i+1) = temp;
             }
         }
     }
@@ -179,7 +179,7 @@ int User::understandHand()
     for(int i=0; i<hand.size(); i++)
     {
         string suitTest = hand.at(i)->getSuit();
-        for(int j=0; j<hand.size(); i++)
+        for(int j=0; j<hand.size(); j++)
         {
             if(hand.at(j)->getSuit() == suitTest)
                 numOfSameSuit++;
@@ -192,16 +192,27 @@ int User::understandHand()
     testValues.push_back("Queen");
     testValues.push_back("Jack");
     testValues.push_back("10");
+    testValues.push_back("9");
+    testValues.push_back("8");
+    testValues.push_back("7");
+    testValues.push_back("6");
+    testValues.push_back("5");
+    testValues.push_back("4");
+    testValues.push_back("3");
+    testValues.push_back("2");
+    
+    
+    
     int numOfMatchingValues = 0;
     
     // Finds number of same values
     for(int i=0; i<testValues.size(); i++)
     {
-        //string tester = testValues.at(i).getValue;
+        string tester = testValues.at(i);
         for(int j=0; j<hand.size(); j++)
         {
-            //if(hand.at(j).getValue = tester)
-                //numOfMatchingValues++;
+            if(hand.at(j)->getValue() == tester)
+                numOfMatchingValues++;
         }
     }
     

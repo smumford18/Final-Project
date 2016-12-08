@@ -38,6 +38,8 @@ void TexasHoldEm::play(User user1)
     cout << "CPU2 Hand: " << endl;
     cpu2.showHand(); cout << endl;
     
+    cout << user1.understandHand() << endl;
+    
     // Loops through the 3 rounds of the game
     while (rounds <= 3)
     {

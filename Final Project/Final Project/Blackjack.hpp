@@ -24,6 +24,18 @@ class Blackjack : public Game
     
 public:
     virtual void play(User);
+    virtual void cardOutput(int);
+    virtual int hit(int&);
+    virtual bool askHit(int total);
+    virtual bool askEnd();
+    virtual int isAce(int);
+    virtual bool isBust(int userSum);
+    virtual int getCard();
+    virtual int aceAddition(int total, int aces);
+    virtual int aceReduction(int total, int aces, bool& aceReduced);
+    virtual bool userPlay(int& total, int aces, bool& aceReduced, bool bust, bool hitAsked);
+    virtual void dealerPlay(bool bust, bool dealerFirst, int dealerTotal, int dealerAces, bool dealerBust, bool dealerAceReduced, int& total);
+    
     
 };
 

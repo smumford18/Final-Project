@@ -174,18 +174,6 @@ int User::understandHand()
     // Straight flush 9
     // Royal flush 10
     
-    // Finds number of same suit
-    int numOfSameSuit = 0;
-    for(int i=0; i<hand.size(); i++)
-    {
-        string suitTest = hand.at(i)->getSuit();
-        for(int j=0; j<hand.size(); j++)
-        {
-            if(hand.at(j)->getSuit() == suitTest)
-                numOfSameSuit++;
-        }
-    }
-    
     vector<string> testValues;
     testValues.push_back("Ace");
     testValues.push_back("King");
@@ -202,17 +190,31 @@ int User::understandHand()
     testValues.push_back("2");
     
     
+    // Finds number of same suit
+    int numOfSameSuit = 0;
+    for(int i=0; i<hand.size(); i++)
+    {
+        string suitTest = hand.at(i)->getSuit();
+        for(int j=0; j<hand.size(); j++)
+        {
+            if(hand.at(j)->getSuit() == suitTest)
+                numOfSameSuit++;
+        }
+    }
     
     int numOfMatchingValues = 0;
     
     // Finds number of same values
-    for(int i=0; i<testValues.size(); i++)
+    for(int i=0; i<hand.size(); i++)
     {
-        string tester = testValues.at(i);
+        string tester = hand.at(i)->getValue();
         for(int j=0; j<hand.size(); j++)
         {
-            if(hand.at(j)->getValue() == tester)
-                numOfMatchingValues++;
+            if(*(hand.at(i)) != *(hand.at(j)))
+            {
+                if(hand.at(j)->getValue() == tester)
+                    numOfMatchingValues++;
+            }
         }
     }
     

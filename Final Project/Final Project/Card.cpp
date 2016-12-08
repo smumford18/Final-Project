@@ -114,3 +114,11 @@ bool Card::operator<(Card& c)
     else
         return false;
 }
+
+bool Card::operator!=(Card& c)
+{
+    if(getValue() != c.getValue() && getSuit() != c.getSuit())
+        return true;
+    else
+        return false;
+}

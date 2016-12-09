@@ -40,6 +40,30 @@ bool Card::isFace()
     else
         return false;
 }
+
+int Card::getValueAsInt()
+{
+    if(value == "Ace")
+        return 1;
+    if(value == "Jack")
+        return 11;
+    if(value == "Queen")
+        return 12;
+    if(value == "King")
+        return 13;
+    return atoi(value.c_str());
+}
+
+int Card::getSuitAsInt()
+{
+    if(suit == "Clubs")
+        return club;
+    if(suit == "Diamonds")
+        return diamond;
+    if(suit == "Hearts")
+        return heart;
+    return spade;
+}
 bool Card::operator==(Card& c)
 {
     if(getValue() == c.getValue())

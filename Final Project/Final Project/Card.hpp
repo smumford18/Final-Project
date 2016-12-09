@@ -13,6 +13,11 @@
 
 using namespace std;
 
+const int club=0;
+const int diamond=1;
+const int heart=2;
+const int spade=3;
+
 class Card
 {
 private:
@@ -25,6 +30,8 @@ public:
     string getValue();
     void displayCard();
     bool isFace();
+    int getValueAsInt();
+    int getSuitAsInt();
     
     bool operator==(Card&); // This should compare the value of the card (doesn't need to worry about suit)
     bool operator>(Card&); // Also compares value

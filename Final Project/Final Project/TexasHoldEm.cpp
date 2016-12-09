@@ -103,24 +103,68 @@ void TexasHoldEm::play(User user1)
         }
         rounds++;
     }
-    if(user1.understandHand() > cpu1.understandHand() && user1.understandHand() > cpu1.understandHand())
+    if(user1.understandHand() > cpu1.understandHand() && user1.understandHand() > cpu2.understandHand())
     {
+        cout << "You won!" << endl;
         user1.addToMoney(pot);
         user1.incrementTexasHoldEmNumberOfWins();
         user1.incrementTexasHoldEmNumberOfGames();
     }
     if(cpu1.understandHand() > user1.understandHand() && cpu1.understandHand() > cpu2.understandHand())
     {
+        cout << "Cpu1 won!" << endl;
         cpu1.addToMoney(pot);
         user1.incrementTexasHoldEmNumberOfGames();
     }
     if(cpu2.understandHand() > user1.understandHand() && cpu2.understandHand() > cpu1.understandHand())
     {
+        cout << "Cpu2 won!" << endl;
         cpu2.addToMoney(pot);
         user1.incrementTexasHoldEmNumberOfGames();
     }
-//    if(user1.understandHand() == cpu1.understandHand())
-//    {
-//        if(user1.)
-//    } needs to be able to work if user and cpu has same value of hand
+    if(user1.understandHand() == cpu1.understandHand())
+    {
+        User winner = tieBreaker(user1, cpu1);
+        winner.addToMoney(pot);
+        user1.incrementTexasHoldEmNumberOfGames();
+        if(winner.getName() == user1.getName())
+            user1.incrementTexasHoldEmNumberOfWins();
+    }
+    if(user1.understandHand() == cpu2.understandHand())
+    {
+        User winner = tieBreaker(user1, cpu2);
+        winner.addToMoney(pot);
+        user1.incrementTexasHoldEmNumberOfGames();
+        if(winner.getName() == user1.getName())
+            user1.incrementTexasHoldEmNumberOfWins();
+    }
+    if(cpu1.understandHand() == cpu2.understandHand())
+    {
+        User winner = tieBreaker(cpu1, cpu2);
+        winner.addToMoney(pot);
+        user1.incrementTexasHoldEmNumberOfGames();
+        if(winner.getName() == user1.getName())
+            user1.incrementTexasHoldEmNumberOfWins();
+    }
+}
+
+User TexasHoldEm::tieBreaker(User user1, User user2)
+{
+    if(user1.understandHand() == 1)
+    {
+        if(*user1.highCard() > *user2.highCard())
+            return user1;
+        else
+            return user2;
+    }
+    if(user1.understandHand() == 2)
+    {
+        return user1;
+    }
+    if(user1.understandHand() == 3)
+    {
+        return user1;
+    }
+    else
+        return user1;
 }

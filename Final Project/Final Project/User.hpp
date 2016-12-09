@@ -33,7 +33,7 @@ public:
     User(); // For debug purposes
     User(string); // Will create new user
     
-    int getName();
+    string getName();
     int getMoney();
     int getBlackJackNumberOfWins();
     int getBlackJackNumberOfGames();
@@ -55,6 +55,7 @@ public:
     void sortHand();
     
     void showHand();
+    Card* highCard();
     void addToHand(Card*);
     int understandHand();
     

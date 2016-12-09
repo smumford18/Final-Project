@@ -42,6 +42,11 @@ User::User(string NAME)
     fileIO.close();
 }
 
+string User::getName()
+{
+    return name;
+}
+
 int User::getMoney()
 {
     return money;
@@ -130,6 +135,11 @@ void User::showHand()
     }
 }
 
+Card* User::highCard()
+{
+    return hand.at(0);
+}
+
 void User::addToHand(Card* newCard)
 {
     hand.push_back(newCard);
@@ -172,7 +182,7 @@ int User::understandHand()
     // Rankings:
     // High Card 1
     // Pair 2
-    // Two Pair 3
+    // Two Pairs 3
     // Three of a kind 4
     // Straight 5
     // Flush 6
@@ -181,66 +191,111 @@ int User::understandHand()
     // Straight flush 9
     // Royal flush 10
     
-    vector<string> testValues;
-    testValues.push_back("Ace");
-    testValues.push_back("King");
-    testValues.push_back("Queen");
-    testValues.push_back("Jack");
-    testValues.push_back("10");
-    testValues.push_back("9");
-    testValues.push_back("8");
-    testValues.push_back("7");
-    testValues.push_back("6");
-    testValues.push_back("5");
-    testValues.push_back("4");
-    testValues.push_back("3");
-    testValues.push_back("2");
+    int values[14] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}; // greatest to least
+    int suits[4] = {0, 0, 0, 0}; // Clubs, diamonds, hearts, spades
     
-    
-    // Finds number of same suit
-    int numOfSameSuit = 0;
     for(int i=0; i<hand.size(); i++)
     {
-        string suitTest = hand.at(i)->getSuit();
-        for(int j=0; j<hand.size(); j++)
-        {
-            if(hand.at(j)->getSuit() == suitTest)
-                numOfSameSuit++;
-        }
+        Card* c = hand.at(i);
+        values[c->getValueAsInt()]++;
+        suits[c->getSuitAsInt()]++;
     }
     
-    int numOfMatchingValues = 0;
-    
-    // Finds number of same values
-    for(int i=0; i<hand.size(); i++)
+    bool flush = false;
+    for(int i=0; i<4; i++)
     {
-        string tester = hand.at(i)->getValue();
-        for(int j=0; j<hand.size(); j++)
+        if(suits[i] >= 5)
         {
-            if(*(hand.at(i)) != *(hand.at(j)))
+            flush = true;
+        }
+    }
+    bool royalStraight = values[1] >= 1 && values[10] >= 1 && values[11] >= 1 && values[12] >= 1 && values[13] >= 1;
+    
+    bool royalFlush = flush && royalStraight;
+    
+    bool straight = royalStraight;
+    if(!straight)
+    {
+        for(int i=2; i<=8; i++)
+        {
+            if(values[i] >= 1 && values[i+1] >= 1 && values[i+2] >= 1 && values[i+3] >= 1 && values[i+4] >= 1)
             {
-                if(hand.at(j)->getValue() == tester)
-                    numOfMatchingValues++;
+                straight = true;
+            }
+        }
+    }
+    bool straightFlush = flush && straight;
+    
+    bool fourOfAKind = false;
+    for(int i=0; i<=13; i++)
+    {
+        if(values[i] == 4)
+            fourOfAKind = true;
+    }
+    
+    bool fullHouse = false;
+    for(int i=0; i<=13; i++)
+    {
+        if(values[i] == 3)
+        {
+            for(int j=0; j<=13; j++)
+            {
+                if(values[j] == 2 && j != i)
+                {
+                    fullHouse = true;
+                }
             }
         }
     }
     
+    bool threeOfAKind = false;
+    for(int i=0; i<=13; i++)
+    {
+        if(values[i] == 3)
+            threeOfAKind = true;
+    }
     
-    if(numOfSameSuit == 5 && numOfMatchingValues == 5)
+    bool twoPair = false;
+    for(int i=0; i<=13; i++)
+    {
+        if(values[i] == 2)
+        {
+            for(int j=0; j<=13; j++)
+            {
+                if(values[j] == 2 && j != i)
+                {
+                    twoPair = true;
+                }
+            }
+        }
+    }
+
+    bool pair = false;
+    for(int i=0; i<=13; i++)
+    {
+        if(values[i] == 2)
+            pair = true;
+    }
+    
+    if(royalFlush == true)
         return 10;
-    else if(numOfSameSuit == 5 && numOfMatchingValues == 5)
+    else if(straight == true && flush == true)
         return 9;
-    else if(numOfMatchingValues == 4)
+    else if(fourOfAKind == true)
         return 8;
-    else if(numOfSameSuit == 5)
+    else if(fullHouse == true)
+        return 7;
+    else if(flush == true)
         return 6;
-    else if(numOfMatchingValues == 3)
+    else if(straight == true)
+        return 5;
+    else if(threeOfAKind == true)
         return 4;
-    else if(numOfMatchingValues == 2)
+    else if(twoPair == true)
+        return 3;
+    else if(pair == true)
         return 2;
-    else if(numOfMatchingValues == 1)
-        return -1;
-    else if(numOfMatchingValues == 0)
+    else
         return 1;
     
     

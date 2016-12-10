@@ -28,28 +28,37 @@ void TexasHoldEm::play(User user1)
         cpu1.addToHand(deck.at(i+1));
         cpu2.addToHand(deck.at(i+2));
     }
+    vector<Card*> userSlot; userSlot.push_back(user1.handAt(0)); userSlot.push_back(user1.handAt(1));
+    vector<Card*> cpu1Slot; cpu1Slot.push_back(cpu1.handAt(0)); cpu1Slot.push_back(cpu1.handAt(1));
+    vector<Card*> cpu2Slot; cpu2Slot.push_back(cpu2.handAt(0)); cpu2Slot.push_back(cpu2.handAt(1));
+    vector<Card*> table;
+    
     user1.sortHand();
     cpu1.sortHand();
     cpu2.sortHand();
-    cout << "Users hand: " << endl;
-    user1.showHand();
-    cout << "CPU1 Hand: " << endl;
-    cpu1.showHand();
-    cout << "CPU2 Hand: " << endl;
-    cpu2.showHand(); cout << endl;
+//    cout << "Users hand: " << endl;
+//    user1.showHand();
+//    cout << "CPU1 Hand: " << endl;
+//    cpu1.showHand();
+//    cout << "CPU2 Hand: " << endl;
+//    cpu2.showHand(); cout << endl;    // DEBUGGING
     
-    int userHand = user1.understandHand();
-    int cpu1Hand = cpu1.understandHand();
-    int cpu2Hand = cpu2.understandHand();
-    
-    // Loops through the 3 rounds of the game
+    // Loops through the 4 rounds of the game
     while (rounds <= 4)
     {
+        int cpu1Hand = cpu1.understandHand();
+        int cpu2Hand = cpu2.understandHand();
+
         int userBet = 0, cpu1Bet = 0, cpu2Bet = 0;
-        cout << "You have $" << user1.getMoney() << endl;
-        cout << "Enter a amount to bet or \"f\" to fold: ";
-        userBet = user1.texasBet();
+        if(user1.getFolded() == false)
+        {
+            cout << "You have $" << user1.getMoney() << endl;
+            cout << "The cards in your hand: "; userSlot.at(0)->displayCard(); userSlot.at(1)->displayCard();
+            cout << "Enter a amount to bet or \"f\" to fold: ";
+            userBet = user1.texasBet();
+        }
         //cout << "User bet: " << userBet << endl;
+        
         // Makes sure cpu hasn't folded
         pot += userBet;
         if(cpu1Bet != -1)
@@ -64,7 +73,7 @@ void TexasHoldEm::play(User user1)
             cout << "CPU2 bet $" << cpu2Bet << endl;
         }
         pot += cpu2Bet;
-        cout << "The pot has $" << pot << " in it." << endl;
+        cout << "The pot has $" << pot << " in it.\n\n";
         if(rounds == 1)
         {
             cout << "The flop: " << endl;
@@ -152,18 +161,54 @@ User TexasHoldEm::tieBreaker(User user1, User user2)
 {
     if(user1.understandHand() == 1)
     {
-        if(*user1.highCard() > *user2.highCard())
+        for(int i=0; i<=6; i++)
+        {
+            if(*user1.highCard() > *user2.highCard())
+                return user1;
+        }
+    }
+    else
+        return user2;
+    
+    if(user1.understandHand() == 2 || user1.understandHand() == 3 || user1.understandHand() == 4 || user1.understandHand() == 7 || user1.understandHand() == 8)
+    {
+        int user1Best = user1.getHighValues();
+        int user2Best = user2.getHighValues();
+        if(user1Best == 0 && user2Best !=0)
+        {
             return user1;
+        }
+        else if(user2Best == 0 && user1Best !=0)
+        {
+            return user1;
+        }
+        else if(user1Best > user2Best)
+        {
+            return user1;
+        }
         else
             return user2;
+        
     }
-    if(user1.understandHand() == 2)
+    if(user1.understandHand() == 5 || user1.understandHand() == 9)
     {
-        return user1;
-    }
-    if(user1.understandHand() == 3)
-    {
-        return user1;
+        int user1Best = user1.getHighStraight();
+        int user2Best = user2.getHighStraight();
+        if(user1Best == 0 && user2Best != 0)
+        {
+            return user1;
+        }
+        else if(user2Best == 0 && user1Best != 0)
+        {
+            return user2;
+        }
+        else if(user1Best > user2Best)
+        {
+            return user1;
+        }
+        else
+            return user2;
+
     }
     else
         return user1;

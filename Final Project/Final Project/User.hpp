@@ -53,10 +53,12 @@ public:
     void saveStats();
     
     void sortHand();
-    
+    Card* handAt(int);
     void showHand();
     Card* highCard();
     void addToHand(Card*);
+    int getHighValues();
+    int getHighStraight();
     int understandHand();
     
     int blackJackBet(); //

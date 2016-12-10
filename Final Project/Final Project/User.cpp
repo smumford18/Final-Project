@@ -177,6 +177,62 @@ void User::sortHand()
     }
 }
 
+Card* User::handAt(int index)
+{
+    return hand.at(index);
+}
+
+int User::getHighValues()
+{
+    int values[14] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}; // greatest to least
+    int suits[4] = {0, 0, 0, 0}; // Clubs, diamonds, hearts, spades
+    
+    for(int i=0; i<hand.size(); i++)
+    {
+        Card* c = hand.at(i);
+        values[c->getValueAsInt()]++;
+        suits[c->getSuitAsInt()]++;
+    }
+    int max = values[0];
+    for(int i=0; i<13; i++)
+    {
+        if(values[i+1] > max)
+        {
+            max = values[i+1];
+        }
+    }
+    for(int i=0; i<14; i++)
+    {
+        if(values[i] == max)
+        {
+            return i;
+        }
+    }
+    return -1; // Error
+}
+
+int User::getHighStraight()
+{
+    int values[14] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}; // greatest to least
+    int suits[4] = {0, 0, 0, 0}; // Clubs, diamonds, hearts, spades
+    
+    for(int i=0; i<hand.size(); i++)
+    {
+        Card* c = hand.at(i);
+        values[c->getValueAsInt()]++;
+        suits[c->getSuitAsInt()]++;
+    }
+    
+    for(int i=2; i<=8; i++)
+    {
+        if(values[i] >= 1 && values[i+1] >= 1 && values[i+2] >= 1 && values[i+3] >= 1 && values[i+4] >= 1)
+        {
+            return i;
+        }
+    }
+    return -1; // Error
+}
+
 int User::understandHand()
 {
     // Rankings:
@@ -299,7 +355,7 @@ int User::understandHand()
         return 1;
     
     
-    return -100;
+    return -100; // Error
 }
 
 int User::blackJackBet()

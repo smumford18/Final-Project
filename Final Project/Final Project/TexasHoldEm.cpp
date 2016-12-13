@@ -28,14 +28,16 @@ void TexasHoldEm::play(User user1)
         cpu1.addToHand(deck.at(i+1));
         cpu2.addToHand(deck.at(i+2));
     }
+    
+    user1.sortHand();
+    cpu1.sortHand();
+    cpu2.sortHand();
+    
     vector<Card*> userSlot; userSlot.push_back(user1.handAt(0)); userSlot.push_back(user1.handAt(1));
     vector<Card*> cpu1Slot; cpu1Slot.push_back(cpu1.handAt(0)); cpu1Slot.push_back(cpu1.handAt(1));
     vector<Card*> cpu2Slot; cpu2Slot.push_back(cpu2.handAt(0)); cpu2Slot.push_back(cpu2.handAt(1));
     vector<Card*> table;
     
-    user1.sortHand();
-    cpu1.sortHand();
-    cpu2.sortHand();
 //    cout << "Users hand: " << endl;
 //    user1.showHand();
 //    cout << "CPU1 Hand: " << endl;
@@ -83,6 +85,7 @@ void TexasHoldEm::play(User user1)
                 user1.addToHand(deck.at(i)); user1.sortHand();
                 cpu1.addToHand(deck.at(i)); cpu1.sortHand();
                 cpu2.addToHand(deck.at(i)); cpu2.sortHand();
+                table.push_back(deck.at(i));
             }
         }
         if(rounds == 2)
@@ -92,6 +95,7 @@ void TexasHoldEm::play(User user1)
             user1.addToHand(deck.at(12)); user1.sortHand();
             cpu1.addToHand(deck.at(12)); cpu1.sortHand();
             cpu2.addToHand(deck.at(12)); cpu2.sortHand();
+            table.push_back(deck.at(12));
         }
         if(rounds == 3)
         {
@@ -100,15 +104,31 @@ void TexasHoldEm::play(User user1)
             user1.addToHand(deck.at(14)); user1.sortHand();
             cpu1.addToHand(deck.at(14)); cpu1.sortHand();
             cpu2.addToHand(deck.at(14)); cpu2.sortHand();
+            table.push_back(deck.at(14));
         }
         if(rounds == 4)
         {
+            cout << "Cards on the table: " << endl;
+            for(int i=0; i<table.size(); i++)
+            {
+                table.at(i)->displayCard();
+            }
             cout << "Users hand: " << user1.understandHand() << endl;
-            user1.showHand();
+            for(int i=0; i<userSlot.size(); i++)
+            {
+                userSlot.at(i)->displayCard();
+            }
             cout << "CPU1 Hand: " << cpu1.understandHand() << endl;
-            cpu1.showHand();
+            for(int i=0; i<cpu1Slot.size(); i++)
+            {
+                cpu1Slot.at(i)->displayCard();
+            }
             cout << "CPU2 Hand: " << cpu2.understandHand() <<endl;
-            cpu2.showHand(); cout << endl;
+            for(int i=0; i<cpu2Slot.size(); i++)
+            {
+                cpu2Slot.at(i)->displayCard();
+            }
+            cout << endl;
         }
         rounds++;
     }
@@ -118,6 +138,7 @@ void TexasHoldEm::play(User user1)
         user1.addToMoney(pot);
         user1.incrementTexasHoldEmNumberOfWins();
         user1.incrementTexasHoldEmNumberOfGames();
+        cout << "You now have $" << user1.getMoney() << "!\n";
     }
     if(cpu1.understandHand() > user1.understandHand() && cpu1.understandHand() > cpu2.understandHand())
     {
@@ -131,29 +152,51 @@ void TexasHoldEm::play(User user1)
         cpu2.addToMoney(pot);
         user1.incrementTexasHoldEmNumberOfGames();
     }
-    if(user1.understandHand() == cpu1.understandHand())
+    if(user1.understandHand() == cpu1.understandHand() && user1.understandHand() > cpu2.understandHand())
     {
         User winner = tieBreaker(user1, cpu1);
         winner.addToMoney(pot);
         user1.incrementTexasHoldEmNumberOfGames();
         if(winner.getName() == user1.getName())
+        {
             user1.incrementTexasHoldEmNumberOfWins();
+            cout << "You won!" << endl;
+            cout << "You now have $" << user1.getMoney() << "!\n";
+        }
+        else if(winner.getName() == cpu1.getName())
+        {
+            cout << "Cpu1 won!" << endl;
+        }
     }
-    if(user1.understandHand() == cpu2.understandHand())
+    if(user1.understandHand() == cpu2.understandHand() && user1.understandHand() > cpu1.understandHand())
     {
         User winner = tieBreaker(user1, cpu2);
         winner.addToMoney(pot);
         user1.incrementTexasHoldEmNumberOfGames();
         if(winner.getName() == user1.getName())
+        {
             user1.incrementTexasHoldEmNumberOfWins();
+            cout << "You won!" << endl;
+            cout << "You now have $" << user1.getMoney() << "!\n";
+        }
+        else if(winner.getName() == cpu2.getName())
+        {
+            cout << "Cpu2 won!" << endl;
+        }
     }
-    if(cpu1.understandHand() == cpu2.understandHand())
+    if(cpu1.understandHand() == cpu2.understandHand()&& cpu1.understandHand() > user1.understandHand())
     {
         User winner = tieBreaker(cpu1, cpu2);
         winner.addToMoney(pot);
         user1.incrementTexasHoldEmNumberOfGames();
-        if(winner.getName() == user1.getName())
-            user1.incrementTexasHoldEmNumberOfWins();
+        if(winner.getName() == cpu1.getName())
+        {
+            cout << "Cpu1 won!" << endl;
+        }
+        else if(winner.getName() == cpu2.getName())
+        {
+            cout << "Cpu2 won!" << endl;
+        }
     }
 }
 

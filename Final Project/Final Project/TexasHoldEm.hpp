@@ -21,7 +21,6 @@ using namespace std;
 class TexasHoldEm : public Game
 {
 public:
-    //TexasHoldEm();
     virtual void play(User*);
     virtual User tieBreaker(User, User);
 };

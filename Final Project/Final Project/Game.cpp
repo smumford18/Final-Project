@@ -26,9 +26,6 @@ User Game::intro()
 
 void Game::menu(User newUser)
 {
-    
-    
-    
     int choice=0;
     do
     {
@@ -42,22 +39,24 @@ void Game::menu(User newUser)
         {
             Blackjack newGame;
             newGame.play(newUser);
- 
+            cout << endl;
         }
-    
         else if (choice == 2)
         {
-          TexasHoldEm newGame;
+            TexasHoldEm newGame;
             newGame.play(newUser);
+            cout << endl;
         }
         else if (choice == 3)
         {
             newUser.ShowStats();
+            cout << endl;
         }
-        else
+        else if (choice != 4)
         {
-            cout << "Whoops, you must have bumped the wrong key. Please try again";
+            cout << "Whoops, you must have bumped the wrong key. Please try again" << endl;
         }
+        newUser.saveStats();
     }while (choice != 4);
 }
 

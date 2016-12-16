@@ -22,21 +22,6 @@ void texasHoldEmGame(User);
 
 int main() {
     
-//     DEBUG for User class
-//    User player1("Steven");
-//    int bet = player1.texasBet();
-//    cout << "The resulting bet is " << bet << endl;
-//    cout << "The player has " << player1.getMoney() << endl;
-//    cout << "The player has " << player1.getBlackJackNumberOfWins() << " number of blackjack wins." << endl;
-//    player1.saveStats();
-    
-    //CPU cpu1;
-    
-   
-//    texasHoldEmGame(user1);
-    
-//    TexasHoldEm newGame;
-//    newGame.play(user1);
     Game newGame;
     User player = newGame.intro();
     newGame.menu(player);

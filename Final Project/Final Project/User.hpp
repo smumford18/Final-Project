@@ -60,6 +60,7 @@ public:
     int getHighValues();
     int getHighStraight();
     int understandHand();
+    void clearHand();
     
     int blackJackBet(); //
     int texasBet();     // SAME? Only need one bet function?

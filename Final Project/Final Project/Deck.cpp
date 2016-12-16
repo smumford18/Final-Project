@@ -88,3 +88,11 @@ void Deck::shuffleDeck()
         deck[i] = temp;
     }
 }
+
+void Deck::clearDeck()
+{
+    for(int i=0; i<deck.size(); i++)
+    {
+        delete deck.at(i);
+    }
+}

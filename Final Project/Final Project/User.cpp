@@ -16,7 +16,7 @@ User::User()
     blackJackNumberOfGames = 0;
     texasHoldEmNumberOfWins = 0;
     texasHoldEmNumberOfGames = 0;
-    cout << "Welcome, " << name << "!" << endl;
+    //cout << "Welcome, " << name << "!" << endl;
 }
 
 User::User(string NAME)
@@ -157,8 +157,7 @@ void User::sortHand()
 //                sorted = false;
 //                break;
 //            }
-//        }
-//        
+//        } 
 //        return sorted;
 //    }
     
@@ -356,6 +355,14 @@ int User::understandHand()
     
     
     return -100; // Error
+}
+
+void User::clearHand()
+{
+    for(int i=0; i<hand.size(); i++)
+    {
+        hand.clear();
+    }
 }
 
 int User::blackJackBet()

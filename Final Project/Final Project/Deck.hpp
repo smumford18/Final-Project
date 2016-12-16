@@ -23,7 +23,7 @@ public:
     ~Deck();
     Card* at(int);
     void shuffleDeck();
-    
+    void clearDeck();
     
 };
 

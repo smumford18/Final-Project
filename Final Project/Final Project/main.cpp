@@ -32,11 +32,14 @@ int main() {
     
     //CPU cpu1;
     
-   User user1("Lydia");
+   
 //    texasHoldEmGame(user1);
     
-    TexasHoldEm newGame;
-    newGame.play(user1);
+//    TexasHoldEm newGame;
+//    newGame.play(user1);
+    Game newGame;
+    User player = newGame.intro();
+    newGame.menu(player);
     
     return 0;
 }

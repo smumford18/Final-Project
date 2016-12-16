@@ -7,6 +7,7 @@
 //
 
 #include "Blackjack.hpp"
+#include "Card.hpp"
 
 
 void Blackjack::play(User user1)
@@ -85,9 +86,9 @@ bool Blackjack::askHit(int total){
     // Function to ask user whether or not they wish to continue playing
 bool Blackjack::askEnd(){
         bool choice;
-        cout<<"Do you wish to quit? (Enter 0 to continue or anything other number to quit) ";
+        cout<<"Do you wish to quit? (Enter 0 to continue or any other number to quit) ";
         cin>>choice;
-        return choice;
+            return choice;
     }
     
     // Checks to see if card is an aces, and if it is, assigns it either the value 0 or 1

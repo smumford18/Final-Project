@@ -23,8 +23,8 @@ private:
     vector<string> games;
     
 public:
-    void menu(User);
-    User intro();
+    void menu(User*);
+    User* intro();
     
 };
 

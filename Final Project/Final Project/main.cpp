@@ -23,7 +23,7 @@ void texasHoldEmGame(User);
 int main() {
     
     Game newGame;
-    User player = newGame.intro();
+    User *player = newGame.intro();
     newGame.menu(player);
     
     return 0;

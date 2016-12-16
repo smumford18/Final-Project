@@ -130,9 +130,8 @@ void User::ShowStats()
 {
     cout << "Number of Texas Hold Em Games: " << texasHoldEmNumberOfGames << endl;
     cout << "Number of Texas Hold Em Wins: " << texasHoldEmNumberOfWins << endl;
-    cout << "Number of BlackJack Games: " << texasHoldEmNumberOfGames << endl;
-    cout << "Number of BlackJack Wins: " << texasHoldEmNumberOfWins << endl;
-    
+    cout << "Number of BlackJack Games: " << blackJackNumberOfGames << endl;
+    cout << "Number of BlackJack Wins: " << blackJackNumberOfWins << endl;
 }
 
 void User::showHand()
@@ -155,20 +154,6 @@ void User::addToHand(Card* newCard)
 
 void User::sortHand()
 {
-//    bool isSorted(const T list[], int size)
-//    {
-//        bool sorted = true;
-//        for(int i=0; i < size; i++)
-//        {
-//            if(list[i] > list[i+1])
-//            {
-//                sorted = false;
-//                break;
-//            }
-//        } 
-//        return sorted;
-//    }
-    
     double size = hand.size();
     for(int j=0; j < size; j++)
     {

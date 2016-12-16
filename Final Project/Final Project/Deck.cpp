@@ -91,8 +91,5 @@ void Deck::shuffleDeck()
 
 void Deck::clearDeck()
 {
-    for(int i=0; i<deck.size(); i++)
-    {
-        delete deck.at(i);
-    }
+    deck.clear();
 }

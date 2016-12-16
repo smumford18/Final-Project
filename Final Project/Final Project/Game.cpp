@@ -13,18 +13,17 @@ using namespace std;
 #include "Blackjack.hpp"
 #include "TexasHoldEm.hpp"
 
-User Game::intro()
+User* Game::intro()
 {
     string username;
     cout << "Welcome to Cards R Us!" << endl;
     cout << "Enter your name: ";
     cin >> username;
-    User user1(username);
-    return user1;
+    return new User(username);
 }
 
 
-void Game::menu(User newUser)
+void Game::menu(User* newUser)
 {
     int choice=0;
     do
@@ -38,7 +37,7 @@ void Game::menu(User newUser)
         if ( choice == 1)
         {
             Blackjack newGame;
-            newGame.play(newUser);
+            newGame.play(*newUser);
             cout << endl;
         }
         else if (choice == 2)
@@ -49,14 +48,14 @@ void Game::menu(User newUser)
         }
         else if (choice == 3)
         {
-            newUser.ShowStats();
+            newUser->ShowStats();
             cout << endl;
         }
         else if (choice != 4)
         {
             cout << "Whoops, you must have bumped the wrong key. Please try again" << endl;
         }
-        newUser.saveStats();
+        newUser->saveStats();
     }while (choice != 4);
 }
 

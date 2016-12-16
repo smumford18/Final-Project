@@ -126,6 +126,14 @@ void User::saveStats()
     }
     fileIO.close();
 }
+void User::ShowStats()
+{
+    cout << "Number of Texas Hold Em Games: " << texasHoldEmNumberOfGames << endl;
+    cout << "Number of Texas Hold Em Wins: " << texasHoldEmNumberOfWins << endl;
+    cout << "Number of BlackJack Games: " << texasHoldEmNumberOfGames << endl;
+    cout << "Number of BlackJack Wins: " << texasHoldEmNumberOfWins << endl;
+    
+}
 
 void User::showHand()
 {

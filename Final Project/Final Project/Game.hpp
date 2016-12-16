@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include <string>
 #include <vector>
+#include "User.hpp"
 
 using namespace std;
 
@@ -22,6 +23,8 @@ private:
     vector<string> games;
     
 public:
+    void menu(User);
+    User intro();
     
 };
 

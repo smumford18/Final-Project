@@ -51,6 +51,7 @@ public:
     void incrementTexasHoldEmNumberOfGames();
     
     void saveStats();
+    void ShowStats();
     
     void sortHand();
     Card* handAt(int);
